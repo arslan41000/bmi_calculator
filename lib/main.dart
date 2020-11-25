@@ -1,36 +1,37 @@
-import 'dart:math';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class CalculatorBrain{
-  CalculatorBrain({@required this.height,this.weight});
-  final int height;
-  final int weight;
-  double _bmi;
 
-  String calculateBMI(){
-    _bmi = weight / pow(height/100,2);
-    return _bmi.toStringAsFixed(1);
-  }
-  String getResult(){
-    if(_bmi>=25){
-      return 'OverWeight';
-    }
-    else if(_bmi>=18.5){
-      return 'Normal';
-    }
-    else{
-      return 'UnderWeight';
-    }
-  }
-  String getInterpretation(){
-    if(_bmi>=25){
-      return 'You have higher body weight than normal.Try to Excercise';
-    }
-    else if(_bmi>=18.5){
-      return 'Normal body weight. Good job!';
-    }
-    else{
-      return 'You have lower body weight than normal.Try to Eat a bit more';
-    }
-  }
-}
+const activeColor = Color(0xFF1D1E33);
+const deActiveColor = Color(0xFF111328);
+const kLabelStyle = TextStyle(
+  fontSize: 20.0,
+  color: Color(0xFF8D8E98),
+);
+const kNumberStyle = TextStyle(fontSize: 50.0,fontWeight: FontWeight.w900);
+
+const kLargeButtonStyle = TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+);
+
+
+const kTitleStyleS2 = TextStyle(
+  fontSize: 50.0,
+  fontWeight: FontWeight.bold,
+);
+
+const kResultText = TextStyle(
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+  color: Colors.green,
+);
+
+const kBMiTextStyle = TextStyle(
+  fontSize: 60.0,
+  fontWeight: FontWeight.bold,
+);
+
+const kBodyTextStyle= TextStyle(
+  fontSize: 15.0,
+  fontWeight: FontWeight.bold,
+);
