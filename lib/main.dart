@@ -1,77 +1,30 @@
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility that Flutter provides. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
+
 import 'package:flutter/material.dart';
-import 'constant_file.dart';
-import 'container_file.dart';
-import 'input_page.dart';
+import 'package:flutter_test/flutter_test.dart';
 
-class ResultScreen extends StatelessWidget {
-  ResultScreen({
-    @required this.bmiResult,
-    @required this.resultText,
-    @required this.interpretation,
+import 'package:final_bmi_calculator/main.dart';
+
+void main() {
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(BMICalculator());
+
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
+
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
+
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
   });
-  final String bmiResult;
-  final String resultText;
-  final String interpretation;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("BMI Result"),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: Container(
-                child: Text('Your Result',style: kTitleStyleS2,),
-              ),
-            ),
-            Expanded(
-              flex: 5,
-              child: RepeatContainerCode(
-                colors: activeColor,
-                cardWidget: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      resultText.toUpperCase(),
-                      style: kResultText,
-                    ),
-                    Text(
-                      bmiResult,
-                      style: kBMiTextStyle,
-                    ),
-                    Text(
-                      interpretation,
-                      textAlign: TextAlign.center,
-                      style: kBodyTextStyle,
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child:  GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>InputPage()));
-                } ,
-                child: Container(
-
-                  child: Center(
-                      child: Text('ReCalculate',style: kLargeButtonStyle,)),
-                  color: Color(0xFFEB1555),
-                  margin: EdgeInsets.only(top: 10.0),
-                  width: double.infinity,
-                  height: 20.0,
-                ),
-              ),
-            ),
-          ],
-
-        )
-    );
-  }
 }
