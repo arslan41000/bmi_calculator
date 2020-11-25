@@ -1,37 +1,24 @@
 import 'package:flutter/material.dart';
 
+class RepeatContainerCode extends StatelessWidget {
+  RepeatContainerCode({@required this.colors,this.cardWidget,this.onPressed});
+  final Color colors;
+  final Widget cardWidget;
+  final Function onPressed;
 
-const activeColor = Color(0xFF1D1E33);
-const deActiveColor = Color(0xFF111328);
-const kLabelStyle = TextStyle(
-  fontSize: 20.0,
-  color: Color(0xFF8D8E98),
-);
-const kNumberStyle = TextStyle(fontSize: 50.0,fontWeight: FontWeight.w900);
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        margin: EdgeInsets.all(15.0),
+        child: cardWidget,
 
-const kLargeButtonStyle = TextStyle(
-  fontSize: 25.0,
-  fontWeight: FontWeight.bold,
-);
-
-
-const kTitleStyleS2 = TextStyle(
-  fontSize: 50.0,
-  fontWeight: FontWeight.bold,
-);
-
-const kResultText = TextStyle(
-  fontSize: 20.0,
-  fontWeight: FontWeight.bold,
-  color: Colors.green,
-);
-
-const kBMiTextStyle = TextStyle(
-  fontSize: 60.0,
-  fontWeight: FontWeight.bold,
-);
-
-const kBodyTextStyle= TextStyle(
-  fontSize: 15.0,
-  fontWeight: FontWeight.bold,
-);
+        decoration: BoxDecoration(
+          color: colors,
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+      ),
+    );
+  }
+}
