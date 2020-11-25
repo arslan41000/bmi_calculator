@@ -1,24 +1,29 @@
+import 'package:final_bmi_calculator/constant_file.dart';
 import 'package:flutter/material.dart';
+import 'constant_file.dart';
 
-class RepeatContainerCode extends StatelessWidget {
-  RepeatContainerCode({@required this.colors,this.cardWidget,this.onPressed});
-  final Color colors;
-  final Widget cardWidget;
-  final Function onPressed;
-
+class RepeatTextandIconeWidget extends StatelessWidget {
+  RepeatTextandIconeWidget({@required this.iconData,this.label});
+  final IconData iconData;
+  final String label;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        margin: EdgeInsets.all(15.0),
-        child: cardWidget,
-
-        decoration: BoxDecoration(
-          color: colors,
-          borderRadius: BorderRadius.circular(10.0),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          iconData,
+          size: 80.0,
         ),
-      ),
+        SizedBox(
+          height: 15.0,
+        ),
+        Text(
+          label,
+          style: kLabelStyle,
+        )
+      ],
+
     );
   }
 }
